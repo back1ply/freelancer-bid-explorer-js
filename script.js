@@ -30,6 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiToken = apiTokenInput.value.trim();
         const outputFormat = outputFormatSelect.value;
 
+        // Validate API token format
+        if (!apiToken.match(/^[a-zA-Z0-9]{32}$/)) {
+            showStatus('Invalid API token format. Please check your token.', 'error');
+            return;
+        }
+
+        // Set button to loading state
+        fetchButton.disabled = true;
+        fetchButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+
         // Validate inputs
         if (!projectUrl || !apiToken) {
             showStatus('Please provide both project URL and API token.', 'error');
@@ -84,7 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             hideSpinner();
-            showStatus(error.message, 'error');
+            const errorMessage = error.status === 401 ? 'Invalid API token. Please check your credentials.' : error.message;
+            showStatus(errorMessage, 'error');
+        } finally {
+            // Reset button state
+            fetchButton.disabled = false;
+            fetchButton.innerHTML = 'Get Bids';
         }
     }
 
