@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const outputFormat = outputFormatSelect.value;
 
             // Validate API token format
-            if (!apiToken.match(/^[a-zA-Z0-9]{28}$/)) {
+            if (!apiToken.match(/^[a-zA-Z0-9]{30}$/)) {
                 showStatus('Invalid API token format. Please check your token.', 'error');
                 return;
             }
