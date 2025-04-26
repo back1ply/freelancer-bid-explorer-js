@@ -1,8 +1,12 @@
+/* Main styling for Freelancer Bids Viewer */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
 }
 
+/* Sidebar styling */
 .sidebar {
     background-color: #ffffff;
     min-height: 100vh;
@@ -11,6 +15,8 @@ body {
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    padding-top: 15px;
+    z-index: 100;
 }
 
 .main-content {
@@ -18,6 +24,7 @@ body {
     overflow-y: auto;
 }
 
+/* Bid description formatting */
 .bid-description {
     white-space: pre-wrap;
     font-family: inherit;
@@ -25,25 +32,80 @@ body {
     padding: 15px;
     border-radius: 5px;
     margin-top: 10px;
+    border: 1px solid #e9ecef;
 }
 
+/* Accordion styling */
 .accordion-button:not(.collapsed) {
     background-color: rgba(13, 110, 253, 0.1);
     color: #0d6efd;
 }
 
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Alert messages */
+.alert {
+    margin-bottom: 15px;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .sidebar {
         height: auto;
         min-height: auto;
         position: relative;
+        margin-bottom: 15px;
+    }
+    
+    .main-content {
+        padding: 15px;
     }
 }
 
+/* Status messages */
 .error-message {
     color: #dc3545;
 }
 
 .success-message {
     color: #198754;
+}
+
+/* Table improvements */
+.table-responsive {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Form styling enhancements */
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button hover effects */
+.btn-primary:hover {
+    background-color: #0a58ca;
+    border-color: #0a53be;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+/* Spinner styling */
+#spinnerArea {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
