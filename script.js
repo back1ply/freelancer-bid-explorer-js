@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const apiToken = apiTokenInput.value.trim();
             const outputFormat = outputFormatSelect.value;
 
-            // Validate API token format
-            if (!apiToken.match(/^[a-zA-Z0-9]{30}$/)) {
-                showStatus('Invalid API token format. Please check your token.', 'error');
+            // Improved API token validation - just check that it's not empty
+            if (!apiToken) {
+                showStatus('API token is required. Please enter your API token.', 'error');
                 return;
             }
 
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchButton.disabled = true;
             fetchButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
 
-            // Validate inputs
-            if (!projectUrl || !apiToken) {
-                showStatus('Please provide both project URL and API token.', 'error');
+            // Validate project URL
+            if (!projectUrl) {
+                showStatus('Please provide a project URL.', 'error');
                 resetButton();
                 return;
             }
